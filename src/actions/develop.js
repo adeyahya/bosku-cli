@@ -7,9 +7,9 @@ module.exports = projectName => {
   const monorepoDir = getMonorepoDir();
   if (monorepoDir) {
     const configPath = path.join(monorepoDir, projectName, 'service.yaml');
+    spawn(projectName, 'yarn', ['dev'], {cwd: path.join(monorepoDir, projectName)});
     const config = yaml(configPath);
     if (config) {
-      spawn(projectName, 'yarn', ['dev'], {cwd: path.join(monorepoDir, projectName)});
       if (Array.isArray(config.dependencies)) {
         config.dependencies.forEach(item => {
           spawn(item, 'yarn', ['dev'], {cwd: path.join(monorepoDir, item)});
