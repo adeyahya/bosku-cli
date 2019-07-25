@@ -8,7 +8,11 @@ const npm = require('./actions/npm');
 
 program
   .version(info.version)
-  .command("npm <projectName> [otherProject...]").action(npm)
-  .command("develop <projectName>").action(develop)
+  .command("npm <projectName> [otherProject...]")
+  .action(npm)
+  
+program
+  .command("develop <projectName>")
+  .action(develop)
 
 program.parse(process.argv);

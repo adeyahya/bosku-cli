@@ -1,6 +1,6 @@
 {
   "name": "bosku-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Command-Line Application for Monorepo",
   "main": "index.js",
   "repository": "https://github.com/adeyahya/bosku-cli",

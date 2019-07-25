@@ -12,17 +12,12 @@ module.exports = (projectName, otherProject) => {
       script: setup[1],
     };
   });
-  const monorepoDir = getMonorepoDir();
-  if (monorepoDir) {
-    projects.forEach(project => {
-      const cwd = path.join(monorepoDir, project.name);
-      if (fs.existsSync(cwd)) {
-        spawn(project.name, 'yarn', [project.script || 'dev'], {cwd});
-      } else {
-        throw Error(`project ${project.name} not found!`)
-      }
-    })
-  } else {
-    // missing monorepo
-  }
+  projects.forEach(project => {
+    const cwd = path.join(monorepoDir, project.name);
+    if (fs.existsSync(cwd)) {
+      spawn(project.name, 'yarn', [project.script || 'dev'], {cwd});
+    } else {
+      throw Error(`project ${project.name} not found!`)
+    }
+  });
 }
