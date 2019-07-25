@@ -13,7 +13,7 @@ module.exports = (projectName, otherProject) => {
     };
   });
   projects.forEach(project => {
-    const cwd = path.join(monorepoDir, project.name);
+    const cwd = path.join(process.cwd(), project.name);
     if (fs.existsSync(cwd)) {
       spawn(project.name, 'yarn', [project.script || 'dev'], {cwd});
     } else {
